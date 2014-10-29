@@ -1,0 +1,59 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30723.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Discoursistency.HTTP", "Discoursistency.HTTP\Discoursistency.HTTP.csproj", "{231BE088-B7E9-4CD5-9F1C-059B9B4670B8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Discoursistency.Base", "Discoursistency.Base\Discoursistency.Base.csproj", "{B55C09D1-D64A-490F-B2ED-B5795F5FED61}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Discoursistency.Base.Tests", "Discoursistency.Base.Tests\Discoursistency.Base.Tests.csproj", "{864B954A-57F2-4071-9054-D81BE3AC1B34}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Discoursistency.Util", "Discoursistency.Util\Discoursistency.Util.csproj", "{34288C65-4893-4BBE-98A0-3BEA4D5075AA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Discoursistency.Util.Tests", "Discoursistency.Util.Tests\Discoursistency.Util.Tests.csproj", "{C957B615-5C2F-4B92-B5B0-AF709FC1C871}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Discoursistency.HTTP.Tests", "Discoursistency.HTTP.Tests\Discoursistency.HTTP.Tests.csproj", "{2882B62A-3239-4602-B3CF-C68E408A832E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{39E51892-5124-4112-B495-5AFCB4D83303}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{231BE088-B7E9-4CD5-9F1C-059B9B4670B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{231BE088-B7E9-4CD5-9F1C-059B9B4670B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{231BE088-B7E9-4CD5-9F1C-059B9B4670B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{231BE088-B7E9-4CD5-9F1C-059B9B4670B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B55C09D1-D64A-490F-B2ED-B5795F5FED61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B55C09D1-D64A-490F-B2ED-B5795F5FED61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B55C09D1-D64A-490F-B2ED-B5795F5FED61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B55C09D1-D64A-490F-B2ED-B5795F5FED61}.Release|Any CPU.Build.0 = Release|Any CPU
+		{864B954A-57F2-4071-9054-D81BE3AC1B34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{864B954A-57F2-4071-9054-D81BE3AC1B34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{864B954A-57F2-4071-9054-D81BE3AC1B34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{864B954A-57F2-4071-9054-D81BE3AC1B34}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34288C65-4893-4BBE-98A0-3BEA4D5075AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34288C65-4893-4BBE-98A0-3BEA4D5075AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34288C65-4893-4BBE-98A0-3BEA4D5075AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34288C65-4893-4BBE-98A0-3BEA4D5075AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C957B615-5C2F-4B92-B5B0-AF709FC1C871}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C957B615-5C2F-4B92-B5B0-AF709FC1C871}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C957B615-5C2F-4B92-B5B0-AF709FC1C871}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C957B615-5C2F-4B92-B5B0-AF709FC1C871}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2882B62A-3239-4602-B3CF-C68E408A832E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2882B62A-3239-4602-B3CF-C68E408A832E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2882B62A-3239-4602-B3CF-C68E408A832E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2882B62A-3239-4602-B3CF-C68E408A832E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
