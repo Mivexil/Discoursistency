@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics.Eventing.Reader;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -7,7 +6,6 @@ using Discoursistency.Base.Exceptions;
 using Discoursistency.Base.Models.Authentication;
 using Discoursistency.HTTP.Client;
 using Discoursistency.HTTP.Client.Models;
-using Microsoft.CSharp.RuntimeBinder;
 
 namespace Discoursistency.Base.Authentication
 {
@@ -39,7 +37,7 @@ namespace Discoursistency.Base.Authentication
                 throw new StatusCodeException((int)response.StatusCode, response.Content);
             if (response.Type != ResponseType.JSON) 
                 throw new UnsupportedTypeException(response.Type, ResponseType.JSON);
-            var csrfObject = CSRFResponse.FromDynamic(response.Content.GetObject());
+            var csrfObject = response.Content.GetObject<CSRFResponse>();
             return new AuthenticationData
             {
                 Cookie = incomingData.Cookie,

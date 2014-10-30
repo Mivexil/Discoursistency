@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Web.Helpers;
+using Newtonsoft.Json;
 
 namespace Discoursistency.HTTP.Client.Models
 {
@@ -29,7 +29,7 @@ namespace Discoursistency.HTTP.Client.Models
             { 
                 _contentType = HTTPClientContentType.StringType;
                 _byteContent = null;
-                _objectContent = null;
+                _jsonStringContent = null;
                 _stringContent = value;
             }
         }
@@ -44,25 +44,25 @@ namespace Discoursistency.HTTP.Client.Models
             set
             {
                 _contentType = HTTPClientContentType.ByteType;
-                _objectContent = null;
+                _jsonStringContent = null;
                 _stringContent = null;
                 _byteContent = value;
             }
         }
 
-        private dynamic _objectContent;
+        private string _jsonStringContent;
         /// <summary>
         /// Object content received from the server.
         /// </summary>
-        public dynamic ObjectContent
+        public string JSONStringContent
         {
-            get { return _objectContent; }
+            get { return _jsonStringContent; }
             set
             {
                 _contentType = HTTPClientContentType.ObjectType;
                 _stringContent = null;
                 _byteContent = null;
-                _objectContent = value;
+                _jsonStringContent = value;
             }
         }
 
@@ -94,7 +94,19 @@ namespace Discoursistency.HTTP.Client.Models
         public static HTTPClientContent FromObject(dynamic o)
         {
             return o != null 
-                ? new HTTPClientContent { ObjectContent = o } 
+                ? new HTTPClientContent { JSONStringContent = JsonConvert.SerializeObject(o) } 
+                : new HTTPClientContent();
+        }
+
+        /// <summary>
+        /// Creates a new content object from a JSON string.
+        /// </summary>
+        /// <param name="j">A JSON string to be turned into a content object.</param>
+        /// <returns>A new content object of object type.</returns>
+        public static HTTPClientContent FromJSONString(string j)
+        {
+            return j != null
+                ? new HTTPClientContent { JSONStringContent = j }
                 : new HTTPClientContent();
         }
 
@@ -113,7 +125,7 @@ namespace Discoursistency.HTTP.Client.Models
                 case HTTPClientContentType.ByteType:
                     return Convert.ToBase64String(ByteContent);
                 case HTTPClientContentType.ObjectType:
-                    return Json.Encode(ObjectContent);
+                    return _jsonStringContent;
             }
             throw new InvalidEnumArgumentException("Unsupported content type.");
         }
@@ -155,11 +167,11 @@ namespace Discoursistency.HTTP.Client.Models
         /// Retrieves the underlying object content.
         /// </summary>
         /// <returns>Object content represented by the content object.</returns>
-        public dynamic GetObject()
+        public T GetObject<T>()
         {
             if (_contentType == HTTPClientContentType.ObjectType)
             {
-                return ObjectContent;
+                return JsonConvert.DeserializeObject<T>(_jsonStringContent);
             }
             throw new InvalidCastException("Response is of type: " + ContentType + ", expected ObjectContent");
         }

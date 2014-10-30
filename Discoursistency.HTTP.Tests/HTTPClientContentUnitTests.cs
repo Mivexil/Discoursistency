@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Net.Http;
 using System.Threading.Tasks;
 using Discoursistency.HTTP.Client;
 using Discoursistency.HTTP.Client.Models;
@@ -8,6 +7,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Discoursistency.Tests
 {
+
     [TestClass]
     public class HTTPClientContentUnitTests
     {
@@ -78,12 +78,17 @@ namespace Discoursistency.Tests
             }
         }
 
+        private class HasID
+        {
+            public int Id { get; set; }
+        }
+
         [TestMethod]
         public void ShouldProperlyRetrieveObject()
         {
-            var o = new { id = 42 };
+            var o = new HasID { Id = 42 };
             _content = HTTPClientContent.FromObject(o);
-            Assert.IsTrue(o.id == ((dynamic)_content.GetObject()).id);
+            Assert.IsTrue(o.Id == _content.GetObject<HasID>().Id);
         }
 
         [TestMethod]
@@ -100,7 +105,7 @@ namespace Discoursistency.Tests
         public void ShouldThrowWhenGettingObjectAndNotAnObject()
         {
             _content = "test";
-            var throwHere = _content.GetObject();
+            var throwHere = _content.GetObject<HasID>();
         }
 
         [TestMethod]

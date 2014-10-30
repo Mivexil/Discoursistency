@@ -8,7 +8,6 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using Discoursistency.HTTP.Client.Models;
-using System.Web.Helpers;
 using Discoursistency.Util.QueryStringCreator;
 
 namespace Discoursistency.HTTP.Client
@@ -114,7 +113,7 @@ namespace Discoursistency.HTTP.Client
                             try
                             {
                                 response.Type = ResponseType.JSON;
-                                response.Content = HTTPClientContent.FromObject(Json.Decode(reply));
+                                response.Content = HTTPClientContent.FromJSONString(reply);
                             }
                             catch (ArgumentException)
                             {

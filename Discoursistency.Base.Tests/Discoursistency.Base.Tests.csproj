@@ -52,11 +52,16 @@
   <ItemGroup>
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ModelTranslationTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Discoursistency.Base\Discoursistency.Base.csproj">
       <Project>{B55C09D1-D64A-490F-B2ED-B5795F5FED61}</Project>
       <Name>Discoursistency.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Discoursistency.HTTP\Discoursistency.HTTP.csproj">
+      <Project>{231BE088-B7E9-4CD5-9F1C-059B9B4670B8}</Project>
+      <Name>Discoursistency.HTTP</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

@@ -9,7 +9,7 @@ namespace Discoursistency.Base.Tests
 {
     //todo either don't do the testing at a level this low, or use a mock
     //still useful for checking the code out, though.
-    /*[TestClass]
+    [TestClass]
     public class UnitTest1
     {
         private DiscourseBaseServiceManager _serviceManager;
@@ -120,5 +120,5 @@ namespace Discoursistency.Base.Tests
             authData = await _service.GetCSRFToken(authData);
             await _service.CreatePost(authData, postData);
         }
-    }*/
+    }
 }
