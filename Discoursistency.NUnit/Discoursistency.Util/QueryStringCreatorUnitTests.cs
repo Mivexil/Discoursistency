@@ -1,34 +1,35 @@
 ﻿using System;
 using System.Collections.Generic;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
+using Discoursistency.Util.QueryStringCreator;
 
 namespace Discoursistency.Util.Tests
 {
-    [TestClass]
+    [TestFixture]
     public class QueryStringCreatorUnitTests
     {
-        [TestMethod]
+        [Test]
         [ExpectedException(typeof(ArgumentException))]
         public void ShouldThrowWhenPassedAPrimitiveType()
         {
             QueryStringCreator.QueryStringCreator.ToQueryParameters(42);
         }
 
-        [TestMethod]
+        [Test]
         [ExpectedException(typeof (ArgumentException))]
         public void ShouldThrowWhenPassedAString()
         {
             QueryStringCreator.QueryStringCreator.ToQueryParameters("test");
         }
 
-        [TestMethod]
+        [Test]
         [ExpectedException(typeof(ArgumentNullException))]
         public void ShouldThrowWhenPassedANullObject()
         {
             QueryStringCreator.QueryStringCreator.ToQueryParameters(null);
         }
 
-        [TestMethod]
+        [Test]
         [ExpectedException(typeof (ArgumentException))]
         public void ShouldThrowWhenPassedAList()
         {
@@ -36,7 +37,7 @@ namespace Discoursistency.Util.Tests
             QueryStringCreator.QueryStringCreator.ToQueryParameters(list);
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldProperlyEncodeDictionary()
         {
             var dictionary = new Dictionary<string, object>
@@ -48,7 +49,7 @@ namespace Discoursistency.Util.Tests
                 QueryStringCreator.QueryStringCreator.ToQueryParameters(dictionary));
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldProperlyEncodePlainOldCLRObject()
         {
             var pocobject = new
@@ -60,7 +61,7 @@ namespace Discoursistency.Util.Tests
                 QueryStringCreator.QueryStringCreator.ToQueryParameters(pocobject));
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldProperlyEncodeArray()
         {
             var wrapperobject = new
@@ -71,7 +72,7 @@ namespace Discoursistency.Util.Tests
                 QueryStringCreator.QueryStringCreator.ToQueryParameters(wrapperobject));
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldProperlyEncodeComplexObjectWithDictionaries()
         {
             //equivalent to following JS object:
@@ -108,7 +109,7 @@ namespace Discoursistency.Util.Tests
                 );
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldPercentEncodeDangerousCharacters()
         {
             var wrapperobject = new
@@ -119,7 +120,7 @@ namespace Discoursistency.Util.Tests
                 QueryStringCreator.QueryStringCreator.ToQueryParameters(wrapperobject));
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldIgnoreNulls()
         {
             var wrapperobject = new
@@ -132,7 +133,7 @@ namespace Discoursistency.Util.Tests
                 QueryStringCreator.QueryStringCreator.ToQueryParameters(wrapperobject));
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldProperlyEncodeTimings()
         {
             var wrapperobject = new

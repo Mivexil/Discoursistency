@@ -1,35 +1,31 @@
-﻿using System;
-using System.Threading.Tasks;
-using Discoursistency.Base.Exceptions;
-using Discoursistency.Base.Models.Authentication;
-using Discoursistency.Base.Models.Posting;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Discoursistency.Base;
+using NUnit.Framework;
 
-namespace Discoursistency.Base.Tests
+namespace Discoursistency.NUnit.Discoursistency.Base
 {
     //todo either don't do the testing at a level this low, or use a mock
     //still useful for checking the code out, though.
-    [TestClass]
+    [TestFixture]
     public class UnitTest1
     {
-        private DiscourseBaseServiceManager _serviceManager;
-        private IDiscourseBaseService _service;
+        //private DiscourseBaseServiceManager _serviceManager;
+        //private IDiscourseBaseService _service;
 
-        [TestInitialize]
+        /*[SetUp]
         public void Initialize()
         {
             _serviceManager = new DiscourseBaseServiceManager();
             _service = _serviceManager.ServiceFor("http://try.discourse.org");
         }
 
-        [TestCleanup]
+        [TearDown]
         public void Cleanup()
         {
             _service.Dispose();
             _serviceManager.Dispose();
         }
 
-        [TestMethod]
+        [Test]
         public async Task ShouldProperlyObtainCSRFToken()
         {
             var authData = new AuthenticationData();
@@ -37,7 +33,7 @@ namespace Discoursistency.Base.Tests
             Assert.IsFalse(string.IsNullOrWhiteSpace(authData.CSRFToken));
         }
 
-        [TestMethod]
+        [Test]
         public async Task ShouldProperlyLogIn()
         {
             var authData = new AuthenticationData();
@@ -51,7 +47,7 @@ namespace Discoursistency.Base.Tests
             Assert.IsFalse(string.IsNullOrWhiteSpace(authData.Cookie));
         }
 
-        [TestMethod]
+        [Test]
         public async Task ShouldCreateTopicInNotRestrictedCategory()
         {
             var authData = new AuthenticationData();
@@ -74,7 +70,7 @@ namespace Discoursistency.Base.Tests
             await _service.CreatePost(authData, postData);
         }
 
-        [TestMethod]
+        [Test]
         public async Task ShouldReplyToTopic()
         {
             var authData = new AuthenticationData();
@@ -97,7 +93,7 @@ namespace Discoursistency.Base.Tests
             await _service.CreatePost(authData, postData);
         }
 
-        [TestMethod]
+        [Test]
         public async Task ShouldReplyToPost()
         {
             var authData = new AuthenticationData();
@@ -119,6 +115,6 @@ namespace Discoursistency.Base.Tests
             authData = await _service.Login(authData, loginData);
             authData = await _service.GetCSRFToken(authData);
             await _service.CreatePost(authData, postData);
-        }
+        }*/
     }
 }

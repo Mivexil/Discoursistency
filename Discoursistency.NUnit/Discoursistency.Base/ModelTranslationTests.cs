@@ -1,15 +1,14 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using Discoursistency.Base.Models.Retrieving;
 using Discoursistency.HTTP.Client.Models;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
-namespace Discoursistency.Base.Tests
+namespace Discoursistency.NUnit.Discoursistency.Base
 {
-    [TestClass]
+    [TestFixture]
     public class ModelTranslationTests
     {
-        [TestMethod]
+        [Test]
         public void PostModelWithRaw()
         {
             var response =

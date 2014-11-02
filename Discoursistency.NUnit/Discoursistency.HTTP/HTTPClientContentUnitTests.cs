@@ -3,56 +3,56 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Discoursistency.HTTP.Client;
 using Discoursistency.HTTP.Client.Models;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace Discoursistency.Tests
 {
 
-    [TestClass]
+    [TestFixture]
     public class HTTPClientContentUnitTests
     {
         private static HTTPClientContent _content;
 
-        [TestInitialize]
+        [SetUp]
         public void Initialize()
         {
             _content = new HTTPClientContent();
         }
 
-        [TestCleanup]
+        [TearDown]
         public void Cleanup()
         {
             _content = null;
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldInitiallyBeEmpty()
         {
             Assert.AreEqual(HTTPClientContentType.EmptyType, _content.ContentType);
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldBeEmptyAfterSettingNullObject()
         {
             _content = HTTPClientContent.FromObject(null);
             Assert.AreEqual(HTTPClientContentType.EmptyType, _content.ContentType);
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldBeAStringAfterSettingString()
         {
             _content = "test";
             Assert.AreEqual(HTTPClientContentType.StringType, _content.ContentType);
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldBeAByteArrayAfterSettingByteArray()
         {
             _content = new Byte[] {255};
             Assert.AreEqual(HTTPClientContentType.ByteType, _content.ContentType);
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldBeAnObjectAfterSettingObject()
         {
             var o = new {id = 42};
@@ -60,14 +60,14 @@ namespace Discoursistency.Tests
             Assert.AreEqual(HTTPClientContentType.ObjectType, _content.ContentType);
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldProperlyRetrieveString()
         {
             _content = "test";
             Assert.IsTrue("test" == _content); //AreEqual requires exact type match
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldProperlyRetrieveByteArray()
         {
             var byteArray = new byte[] {1, 2, 3};
@@ -83,7 +83,7 @@ namespace Discoursistency.Tests
             public int Id { get; set; }
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldProperlyRetrieveObject()
         {
             var o = new HasID { Id = 42 };
@@ -91,7 +91,7 @@ namespace Discoursistency.Tests
             Assert.IsTrue(o.Id == _content.GetObject<HasID>().Id);
         }
 
-        [TestMethod]
+        [Test]
         [ExpectedException(typeof (InvalidCastException))]
         public void ShouldThrowWhenWrongTypeCastedToString()
         {
@@ -100,7 +100,7 @@ namespace Discoursistency.Tests
             var throwHere = (string) _content;
         }
 
-        [TestMethod]
+        [Test]
         [ExpectedException(typeof (InvalidCastException))]
         public void ShouldThrowWhenGettingObjectAndNotAnObject()
         {
@@ -108,20 +108,20 @@ namespace Discoursistency.Tests
             var throwHere = _content.GetObject<HasID>();
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldReturnEmptyStringWhenEmptyAndToStringCalled()
         {
             Assert.AreEqual(String.Empty, _content.ToString());
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldReturnExactContentWhenStringAndToStringCalled()
         {
             _content = "test";
             Assert.AreEqual("test", _content.ToString());
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldReturnBase64StringWhenByteArrayAndToStringCalled()
         {
             _content = new Byte[]
@@ -133,7 +133,7 @@ namespace Discoursistency.Tests
             Assert.AreEqual("QUJD", _content.ToString());
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldDelegateToStringWhenObjectAndToStringCalled()
         {
             _content = HTTPClientContent.FromObject(42);
