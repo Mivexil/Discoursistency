@@ -1,4 +1,10 @@
-﻿using Discoursistency.Base;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Discoursistency.Base;
+using Discoursistency.Base.Models.Authentication;
+using Discoursistency.Base.Models.Posting;
+using Discoursistency.Base.Models.Retrieving;
 using NUnit.Framework;
 
 namespace Discoursistency.NUnit.Discoursistency.Base
@@ -8,14 +14,14 @@ namespace Discoursistency.NUnit.Discoursistency.Base
     [TestFixture]
     public class UnitTest1
     {
-        //private DiscourseBaseServiceManager _serviceManager;
-        //private IDiscourseBaseService _service;
+        private DiscourseBaseServiceManager _serviceManager;
+        private IDiscourseBaseService _service;
 
-        /*[SetUp]
+        [SetUp]
         public void Initialize()
         {
             _serviceManager = new DiscourseBaseServiceManager();
-            _service = _serviceManager.ServiceFor("http://try.discourse.org");
+            _service = _serviceManager.ServiceFor("http://what.thedailywtf.com");
         }
 
         [TearDown]
@@ -25,7 +31,7 @@ namespace Discoursistency.NUnit.Discoursistency.Base
             _serviceManager.Dispose();
         }
 
-        [Test]
+        /*[Test]
         public async Task ShouldProperlyObtainCSRFToken()
         {
             var authData = new AuthenticationData();
@@ -116,5 +122,26 @@ namespace Discoursistency.NUnit.Discoursistency.Base
             authData = await _service.GetCSRFToken(authData);
             await _service.CreatePost(authData, postData);
         }*/
+
+        [Test]
+        public async Task ShouldCreateTopicInNotRestrictedCategory()
+        {
+            var authData = new AuthenticationData();
+            var loginData = new LoginRequestData
+            {
+                login = "Tester",
+                password = "1@3$5^7*"
+            };
+            var postData = new GetMultiplePostsRequest
+            {
+                topicId = 3518,
+                post_ids = new List<int> { 97880, 97883 }
+            };
+            authData = await _service.GetCSRFToken(authData);
+            authData = await _service.Login(authData, loginData);
+            authData = await _service.GetCSRFToken(authData);
+            var posts = await _service.GetMultiplePosts(authData, postData);
+            Assert.AreEqual(17, posts.post_stream.posts.ElementAt(0).user_id);
+        }
     }
 }

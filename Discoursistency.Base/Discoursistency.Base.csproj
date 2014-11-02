@@ -55,11 +55,16 @@
     <Compile Include="Models\Posting\PostRequest.cs" />
     <Compile Include="Models\Posting\TimingsRequest.cs" />
     <Compile Include="Models\Retrieving\ActionSummaryItem.cs" />
-    <Compile Include="Models\Retrieving\PostModelWithRaw.cs" />
+    <Compile Include="Models\Retrieving\GetMultiplePostsRequest.cs" />
+    <Compile Include="Models\Retrieving\GetPostRequest.cs" />
+    <Compile Include="Models\Retrieving\MultiplePostsModel.cs" />
+    <Compile Include="Models\Retrieving\PostModel.cs" />
+    <Compile Include="Models\Retrieving\PostStreamModel.cs" />
     <Compile Include="Posting\DiscoursePostingService.cs" />
     <Compile Include="Posting\IDiscoursePostingService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Retrieving\DiscoursePostRetrievalService.cs" />
+    <Compile Include="Retrieving\IDiscoursePostRetrievalService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Discoursistency.HTTP\Discoursistency.HTTP.csproj">

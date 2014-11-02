@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 using Discoursistency.Base.Authentication;
 using Discoursistency.Base.Models.Authentication;
 using Discoursistency.Base.Models.Posting;
+using Discoursistency.Base.Models.Retrieving;
 using Discoursistency.Base.Posting;
+using Discoursistency.Base.Retrieving;
 using Discoursistency.HTTP.Client;
 
 namespace Discoursistency.Base
@@ -16,11 +18,13 @@ namespace Discoursistency.Base
         private readonly IClient _webClient;
         private readonly IDiscourseAuthenticationService _authentication;
         private readonly IDiscoursePostingService _posting;
+        private readonly IDiscoursePostRetrievalService _retrieving;
         public DiscourseBaseService(string siteURL, int requestsPerSecond = 5)
         {
             _webClient = new Client(siteURL, requestsPerSecond);
             _authentication = new DiscourseAuthenticationService(_webClient);
             _posting = new DiscoursePostingService(_webClient);
+            _retrieving = new DiscoursePostRetrievalService(_webClient);
         }
 
         public void Dispose()
@@ -66,6 +70,16 @@ namespace Discoursistency.Base
         public async Task DeletePost(AuthenticationData authData, PostDeleteRequest deleteData)
         {
             await _posting.DeletePost(authData, deleteData);
+        }
+
+        public async Task<MultiplePostsModel> GetMultiplePosts(AuthenticationData authData, GetMultiplePostsRequest requestData)
+        {
+            return await _retrieving.GetMultiplePosts(authData, requestData);
+        }
+
+        public async Task<PostModel> GetPost(AuthenticationData authData, GetPostRequest getPostData)
+        {
+            return await _retrieving.GetPost(authData, getPostData);
         }
     }
 }

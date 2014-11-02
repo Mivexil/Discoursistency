@@ -3,6 +3,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using Discoursistency.Base.Models.Authentication;
 using Discoursistency.Base.Models.Posting;
+using Discoursistency.Base.Models.Retrieving;
 
 namespace Discoursistency.Base
 {
@@ -68,5 +69,10 @@ namespace Discoursistency.Base
         /// <param name="deleteData">Information about the deletion.</param>
         /// <returns></returns>
         Task DeletePost(AuthenticationData authData, PostDeleteRequest deleteData);
+
+        Task<MultiplePostsModel> GetMultiplePosts(AuthenticationData authData,
+            GetMultiplePostsRequest requestData);
+
+        Task<PostModel> GetPost(AuthenticationData authData, GetPostRequest getPostData);
     }
 }

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Discoursistency.Base.Models.Retrieving
 {
-    public class PostModelWithRaw
+    public class PostModel
     {
         public IEnumerable<ActionSummaryItem> actions_summary { get; set; }
         public bool admin { get; set; }
@@ -31,6 +31,7 @@ namespace Discoursistency.Base.Models.Retrieving
         public string primary_group_name { get; set; }
         public int quote_count { get; set; }
         public string raw { get; set; }
+        public bool? read { get; set; }
         public int reads { get; set; }
         public int reply_count { get; set; }
         public int? reply_to_post_number { get; set; }
