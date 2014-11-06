@@ -81,5 +81,10 @@ namespace Discoursistency.Base
         {
             return await _retrieving.GetPost(authData, getPostData);
         }
+
+        public async Task<UserModel> GetUserData(AuthenticationData authData, UserRequest userData)
+        {
+            return await _retrieving.GetUserData(authData, userData);
+        }
     }
 }

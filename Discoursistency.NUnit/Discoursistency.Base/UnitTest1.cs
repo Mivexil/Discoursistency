@@ -123,8 +123,8 @@ namespace Discoursistency.NUnit.Discoursistency.Base
             await _service.CreatePost(authData, postData);
         }*/
 
-        [Test]
-        public async Task ShouldCreateTopicInNotRestrictedCategory()
+        /*[Test]
+        public async Task ShouldRetrieveMultiplePostsFromTopic()
         {
             var authData = new AuthenticationData();
             var loginData = new LoginRequestData
@@ -142,6 +142,26 @@ namespace Discoursistency.NUnit.Discoursistency.Base
             authData = await _service.GetCSRFToken(authData);
             var posts = await _service.GetMultiplePosts(authData, postData);
             Assert.AreEqual(17, posts.post_stream.posts.ElementAt(0).user_id);
-        }
+        }*/
+
+        //[Test]
+        /*public async Task ShouldRetrieveUserData()
+        {
+            var authData = new AuthenticationData();
+            var loginData = new LoginRequestData
+            {
+                login = "Tester",
+                password = "1@3$5^7*"
+            };
+            var userData = new UserRequest
+            {
+                username = "accalia"
+            };
+            authData = await _service.GetCSRFToken(authData);
+            authData = await _service.Login(authData, loginData);
+            authData = await _service.GetCSRFToken(authData);
+            var posts = await _service.GetUserData(authData, userData);
+            Assert.AreEqual(10, 10);
+        }*/
     }
 }

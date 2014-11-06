@@ -8,7 +8,7 @@ namespace Discoursistency.Base.Retrieving
     {
         Task<MultiplePostsModel> GetMultiplePosts(AuthenticationData authData,
             GetMultiplePostsRequest requestData);
-
         Task<PostModel> GetPost(AuthenticationData authData, GetPostRequest getPostData);
+        Task<UserModel> GetUserData(AuthenticationData authData, UserRequest userData);
     }
 }

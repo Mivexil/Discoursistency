@@ -74,5 +74,6 @@ namespace Discoursistency.Base
             GetMultiplePostsRequest requestData);
 
         Task<PostModel> GetPost(AuthenticationData authData, GetPostRequest getPostData);
+        Task<UserModel> GetUserData(AuthenticationData authData, UserRequest userData);
     }
 }

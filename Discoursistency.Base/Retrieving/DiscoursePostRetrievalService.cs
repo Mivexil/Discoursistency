@@ -65,5 +65,28 @@ namespace Discoursistency.Base.Retrieving
                 throw new StatusCodeException((int)response.StatusCode, response.Content);
             return response.Content.GetObject<MultiplePostsModel>();
         }
+
+        public async Task<UserModel> GetUserData(AuthenticationData authData,
+            UserRequest userData)
+        {
+            var targetURL = "/users/" + userData.username + ".json";
+            userData.username = null;
+            var request = new HTTPClientRequest
+            {
+                AsXmlHttpRequest = true,
+                Content = userData,
+                Headers = new AuthData
+                {
+                    CookieString = authData.Cookie,
+                    XSRFString = authData.CSRFToken
+                },
+                Method = HttpMethod.Get,
+                Target = targetURL
+            };
+            var response = await _client.IssueRequest(request);
+            if (response.StatusCode != HttpStatusCode.OK)
+                throw new StatusCodeException((int)response.StatusCode, response.Content);
+            return response.Content.GetObject<UserModel>();
+        }
     }
 }
