@@ -10,8 +10,8 @@ namespace Discoursistency.Util.BiDictionary
     /// <typeparam name="TValue">Type of the dictionary value</typeparam>
     public class BiDictionary<TKey, TValue>
     {
-        private Dictionary<TKey, TValue> _normalDictionary = new Dictionary<TKey, TValue>();
-        private Dictionary<TValue, TKey> _invertedDictionary = new Dictionary<TValue, TKey>();
+        private readonly Dictionary<TKey, TValue> _normalDictionary = new Dictionary<TKey, TValue>();
+        private readonly Dictionary<TValue, TKey> _invertedDictionary = new Dictionary<TValue, TKey>();
 
         /// <summary>
         /// Retrieves or sets a value by key, using the [] operator.

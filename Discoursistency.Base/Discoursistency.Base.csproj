@@ -35,46 +35,76 @@
     <Reference Include="System.Net.Http" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Authentication\DiscourseAuthenticationService.cs" />
+    <Compile Include="Authentication\BaseAuthenticationService.cs" />
+    <Compile Include="CategoryRetrieving\BaseCategoryRetrievalService.cs" />
+    <Compile Include="CategoryRetrieving\IBaseCategoryRetrievalService.cs" />
     <Compile Include="DiscourseBaseService.cs" />
     <Compile Include="DiscourseBaseServiceManager.cs" />
-    <Compile Include="Authentication\IDiscourseAuthenticationService.cs" />
+    <Compile Include="Authentication\IBaseAuthenticationService.cs" />
     <Compile Include="Exceptions\CookieNotReceivedException.cs" />
     <Compile Include="Exceptions\StatusCodeException.cs" />
     <Compile Include="Exceptions\UnexpectedResponseException.cs" />
     <Compile Include="Exceptions\UnsupportedTypeException.cs" />
     <Compile Include="IDiscourseBaseService.cs" />
     <Compile Include="IDiscourseBaseServiceManager.cs" />
+    <Compile Include="MessageBus\BaseMessageBusService.cs" />
+    <Compile Include="MessageBus\IBaseMessageBusService.cs" />
     <Compile Include="Models\Authentication\AuthenticationData.cs" />
     <Compile Include="Models\Authentication\CSRFResponse.cs" />
     <Compile Include="Models\Authentication\LoginRequestData.cs" />
-    <Compile Include="Models\Posting\PostActionRequest.cs" />
-    <Compile Include="Models\Posting\PostDeleteRequest.cs" />
-    <Compile Include="Models\Posting\PostEditPostModel.cs" />
-    <Compile Include="Models\Posting\PostEditRequest.cs" />
-    <Compile Include="Models\Posting\PostRequest.cs" />
+    <Compile Include="Models\CategoryRetrieving\CategoryList.cs" />
+    <Compile Include="Models\CategoryRetrieving\CategoryListResponse.cs" />
+    <Compile Include="Models\CategoryRetrieving\CategoryModel.cs" />
+    <Compile Include="Models\MessageBus\MessageBusRequest.cs" />
+    <Compile Include="Models\MessageBus\MessageBusResponse.cs" />
+    <Compile Include="Models\Posting\PerformPostActionRequest.cs" />
+    <Compile Include="Models\Posting\DeletePostRequest.cs" />
+    <Compile Include="Models\Posting\EditPostModel.cs" />
+    <Compile Include="Models\Posting\EditPostRequest.cs" />
+    <Compile Include="Models\Posting\NewPostRequest.cs" />
     <Compile Include="Models\Posting\TimingsRequest.cs" />
-    <Compile Include="Models\Retrieving\ActionSummaryItem.cs" />
-    <Compile Include="Models\Retrieving\BadgeModel.cs" />
-    <Compile Include="Models\Retrieving\BadgeTypeModel.cs" />
-    <Compile Include="Models\Retrieving\CustomGroupModel.cs" />
-    <Compile Include="Models\Retrieving\GetMultiplePostsRequest.cs" />
-    <Compile Include="Models\Retrieving\GetPostRequest.cs" />
-    <Compile Include="Models\Retrieving\MultiplePostsModel.cs" />
-    <Compile Include="Models\Retrieving\PostModel.cs" />
-    <Compile Include="Models\Retrieving\PostStreamModel.cs" />
-    <Compile Include="Models\Retrieving\PrivateMessagesStatsModel.cs" />
-    <Compile Include="Models\Retrieving\SmallUserModel.cs" />
-    <Compile Include="Models\Retrieving\UserBadgeModel.cs" />
-    <Compile Include="Models\Retrieving\UserModel.cs" />
-    <Compile Include="Models\Retrieving\UserRequest.cs" />
-    <Compile Include="Models\Retrieving\UserStatsItemModel.cs" />
-    <Compile Include="Models\Retrieving\UserSubmodel.cs" />
-    <Compile Include="Posting\DiscoursePostingService.cs" />
-    <Compile Include="Posting\IDiscoursePostingService.cs" />
+    <Compile Include="Models\PostRetrieving\ActionSummaryItem.cs" />
+    <Compile Include="Models\PostRetrieving\GetPostByTopicRequest.cs" />
+    <Compile Include="Models\PostRetrieving\ThreadLinkModel.cs" />
+    <Compile Include="Models\PostRetrieving\TopicDetailsModel.cs" />
+    <Compile Include="Models\PostRetrieving\SmallTopicModel.cs" />
+    <Compile Include="Models\PostRetrieving\TopicListModel.cs" />
+    <Compile Include="Models\PostRetrieving\TopicListRequest.cs" />
+    <Compile Include="Models\PostRetrieving\TopicListResponse.cs" />
+    <Compile Include="Models\PostRetrieving\TopicModel.cs" />
+    <Compile Include="Models\PostRetrieving\TopicRequest.cs" />
+    <Compile Include="Models\UserRetrieving\BadgeModel.cs" />
+    <Compile Include="Models\UserRetrieving\BadgeTypeModel.cs" />
+    <Compile Include="Models\UserRetrieving\CustomGroupModel.cs" />
+    <Compile Include="Models\PostRetrieving\GetMultiplePostsRequest.cs" />
+    <Compile Include="Models\PostRetrieving\GetPostRequest.cs" />
+    <Compile Include="Models\PostRetrieving\MultiplePostsModel.cs" />
+    <Compile Include="Models\NotificationRetrieving\NotificationData.cs" />
+    <Compile Include="Models\NotificationRetrieving\NotificationHistoryRequest.cs" />
+    <Compile Include="Models\NotificationRetrieving\NotificationModel.cs" />
+    <Compile Include="Models\PostRetrieving\PostModel.cs" />
+    <Compile Include="Models\PostRetrieving\PostStreamModel.cs" />
+    <Compile Include="Models\UserRetrieving\PosterModel.cs" />
+    <Compile Include="Models\UserRetrieving\PrivateMessagesStatsModel.cs" />
+    <Compile Include="Models\UserRetrieving\SmallUserModel.cs" />
+    <Compile Include="Models\UserActionRetrieving\UserActionModel.cs" />
+    <Compile Include="Models\UserActionRetrieving\UserActionRequest.cs" />
+    <Compile Include="Models\UserRetrieving\UserBadgeModel.cs" />
+    <Compile Include="Models\UserRetrieving\UserModel.cs" />
+    <Compile Include="Models\UserRetrieving\UserRequest.cs" />
+    <Compile Include="Models\UserRetrieving\UserStatsItemModel.cs" />
+    <Compile Include="Models\UserRetrieving\UserSubmodel.cs" />
+    <Compile Include="NotificationRetrieving\BaseNotificationRetrievalService.cs" />
+    <Compile Include="NotificationRetrieving\IBaseNotificationRetrievalService.cs" />
+    <Compile Include="Posting\BasePostingService.cs" />
+    <Compile Include="Posting\IBasePostingService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Retrieving\DiscoursePostRetrievalService.cs" />
-    <Compile Include="Retrieving\IDiscoursePostRetrievalService.cs" />
+    <Compile Include="PostRetrieving\BasePostRetrievalService.cs" />
+    <Compile Include="PostRetrieving\IBasePostRetrievalService.cs" />
+    <Compile Include="UserActionRetrieving\BaseUserActionRetrievalService.cs" />
+    <Compile Include="UserActionRetrieving\IBaseUserActionRetrievalService.cs" />
+    <Compile Include="UserRetrieving\BaseUserRetrievalService.cs" />
+    <Compile Include="UserRetrieving\IBaseUserRetrievalService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Discoursistency.HTTP\Discoursistency.HTTP.csproj">
@@ -85,6 +115,7 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

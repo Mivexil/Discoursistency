@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using Discoursistency.Base;
 using Discoursistency.Base.Models.Authentication;
 using Discoursistency.Base.Models.Posting;
-using Discoursistency.Base.Models.Retrieving;
 using NUnit.Framework;
 
 namespace Discoursistency.NUnit.Discoursistency.Base

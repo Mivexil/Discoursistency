@@ -10,7 +10,13 @@ namespace Discoursistency.Base.Models.Authentication
     /// </summary>
     public class LoginRequestData
     {
+        /// <summary>
+        /// Username of the user being logged in.
+        /// </summary>
         public string login { get; set; }
+        /// <summary>
+        /// Password of the user being logged in.
+        /// </summary>
         public string password { get; set; }
     }
 }

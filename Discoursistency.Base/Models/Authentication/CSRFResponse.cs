@@ -11,6 +11,9 @@ namespace Discoursistency.Base.Models.Authentication
     /// </summary>
     public class CSRFResponse
     {
+        /// <summary>
+        /// CSRF token retrieved from the issuer.
+        /// </summary>
         public string csrf { get; set; }
 
     }

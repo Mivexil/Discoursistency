@@ -1,5 +1,8 @@
-﻿using System.Linq;
-using Discoursistency.Base.Models.Retrieving;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Discoursistency.Base.Models.MessageBus;
+using Discoursistency.Base.Models.PostRetrieving;
+using Discoursistency.Base.Models.UserRetrieving;
 using Discoursistency.HTTP.Client.Models;
 using NUnit.Framework;
 
@@ -38,6 +41,17 @@ namespace Discoursistency.NUnit.Discoursistency.Base
                     );
             var model = response.GetObject<UserModel>();
             Assert.AreEqual(model.user.auto_track_topics_after_msecs, 0);
+        }
+
+        [Test]
+        public void MessageBus()
+        {
+            var response =
+                HTTPClientContent.FromJSONString(
+                    @"[{""global_id"":-1,""message_id"":-1,""channel"":""/__status"",""data"":{""/global/asset-version"":15,""/site/banner"":0,""/file-change/a836b201-4155-42f7-a83e-76694b5ba2ee"":10,""/file-change"":15,""/site/read-only"":26,""/notification/261"":549,""/categories"":0,""/new"":136,""/latest"":9198,""/unread/261"":9714}}]"
+                    );
+            var model = response.GetObject<IEnumerable<MessageBusResponse>>();
+            Assert.AreEqual(model.ElementAt(0).data.ToObject<IDictionary<string, int>>()["/global/asset-version"], 15);
         }
     }
 }
